@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "JavaScript", "JavaScript\JavaScript.esproj", "{1A26565B-E663-4F12-8AEB-0FB6BE77E5BF}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Python", "Python\Python.pyproj", "{426F54EC-905C-42D1-BE6F-42A1FC746213}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,8 @@ Global
 		{1A26565B-E663-4F12-8AEB-0FB6BE77E5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A26565B-E663-4F12-8AEB-0FB6BE77E5BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A26565B-E663-4F12-8AEB-0FB6BE77E5BF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{426F54EC-905C-42D1-BE6F-42A1FC746213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426F54EC-905C-42D1-BE6F-42A1FC746213}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
