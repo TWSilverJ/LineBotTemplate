@@ -1,9 +1,24 @@
+using System.Net.Http.Headers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// 讀取應用程式參數
+string lineChannelAccessToken = builder.Configuration["LINE_CHANNEL_ACCESS_TOKEN"];
+string lineChannelSecret = builder.Configuration["LINE_CHANNEL_SECRET"];
+Console.WriteLine(lineChannelAccessToken);
+Console.WriteLine(lineChannelSecret);
+
+// 建立 HTTP Client
+var httpClient = new HttpClient() {
+    BaseAddress = new Uri("https://api.line.me/v2/"),
+};
+httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", lineChannelAccessToken);
+httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 var app = builder.Build();
 
@@ -15,26 +30,6 @@ if (app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () => {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.MapGet("/", () => "Hello world!");
 
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary) {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
